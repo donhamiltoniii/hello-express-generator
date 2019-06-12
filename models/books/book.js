@@ -1,10 +1,11 @@
 class Book {
-  constructor(id, title, author, isbn, description) {
+  constructor(id, title, author, isbn, description, imageUrl) {
     this._id = id;
     this._title = title;
     this._author = author;
     this._isbn = isbn;
     this._description = description;
+    this._imageUrl = imageUrl;
   }
 
   get id() {
@@ -26,4 +27,10 @@ class Book {
   get description() {
     return this._description;
   }
+
+  get imageUrl() {
+    return this._imageUrl;
+  }
 }
+
+module.exports = Book;

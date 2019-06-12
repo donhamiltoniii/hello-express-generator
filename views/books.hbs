@@ -1,0 +1,12 @@
+<main>
+  <div class="container">
+    <ul class="book-cards">
+      {{#each books}}
+      <li class="book-card">
+        <figure><img src="{{imageUrl}}" alt="{{title}}"></figure>
+        <a class="book-card__link" href="/books/{{id}}">{{title}}</a>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+</main>

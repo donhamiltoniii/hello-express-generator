@@ -1,10 +1,15 @@
+const data = require("../models/populator");
+
 class BookController {
   static renderBooks(req, res, next) {
-    res.render("index");
+    const books = data.books;
+    res.render("books", { books });
   }
 
   static renderBook(req, res, next) {
-    res.render("book");
+    const id = req.params.id;
+    const book = data.getBook(id);
+    res.render("book", { book });
   }
 }
 
