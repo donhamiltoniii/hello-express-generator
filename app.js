@@ -4,20 +4,20 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
-var homeRouter = require("./routes/home-router");
-const bookRouter = require("./routes/books-router");
+var homeRouter = require("./src/server/routes/home-router");
+const bookRouter = require("./src/server/routes/books-router");
 
 var app = express();
 
 // view engine setup
-app.set("views", path.join(__dirname, "views"));
+app.set("views", path.join(__dirname, "src/server/views"));
 app.set("view engine", "hbs");
 
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "src/public")));
 
 app.use("/", homeRouter);
 app.use("/books", bookRouter);
