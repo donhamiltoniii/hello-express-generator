@@ -44,6 +44,46 @@ function populateBooks() {
       "https://images-na.ssl-images-amazon.com/images/I/51kDbV%2BN65L._SX396_BO1,204,203,200_.jpg"
     )
   );
+  repo.addBook(
+    new Book(
+      5,
+      "Test Driven Development: By Example",
+      "Kent Beck",
+      "9780321146533",
+      "TDD!!!",
+      "https://images-na.ssl-images-amazon.com/images/I/51kDbV%2BN65L._SX396_BO1,204,203,200_.jpg"
+    )
+  );
+  repo.addBook(
+    new Book(
+      6,
+      "Test Driven Development: By Example",
+      "Kent Beck",
+      "9780321146533",
+      "TDD!!!",
+      "https://images-na.ssl-images-amazon.com/images/I/51kDbV%2BN65L._SX396_BO1,204,203,200_.jpg"
+    )
+  );
+  repo.addBook(
+    new Book(
+      7,
+      "Test Driven Development: By Example",
+      "Kent Beck",
+      "9780321146533",
+      "TDD!!!",
+      "https://images-na.ssl-images-amazon.com/images/I/51kDbV%2BN65L._SX396_BO1,204,203,200_.jpg"
+    )
+  );
+  repo.addBook(
+    new Book(
+      8,
+      "Test Driven Development: By Example",
+      "Kent Beck",
+      "9780321146533",
+      "TDD!!!",
+      "https://images-na.ssl-images-amazon.com/images/I/51kDbV%2BN65L._SX396_BO1,204,203,200_.jpg"
+    )
+  );
 }
 
 populateBooks();
