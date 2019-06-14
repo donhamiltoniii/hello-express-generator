@@ -9,9 +9,21 @@ describe("Home Router/Controller", () => {
       // Act
       .get("/")
       .then(response => {
-        console.log(response);
         // Assert
         expect(response.statusCode).toBe(302);
+        done();
+      });
+  });
+
+  test("should successfully redirect from '/' to '/books'", done => {
+    // Arrange
+    request(app)
+      // Act
+      .get("/")
+      .then(response => {
+        // Assert
+        expect(response.req.path).toBe("/");
+        expect(response.headers.location).toBe("/books");
         done();
       });
   });
