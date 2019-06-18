@@ -7,7 +7,61 @@ var logger = require("morgan");
 var homeRouter = require("./src/server/routes/home-router");
 const bookRouter = require("./src/server/routes/books-router");
 
+const Book = require("./src/server/models/books/book");
+
+const { username, password } = require("./src/server/config/db");
+
 var app = express();
+
+const dbConnection = `mongodb+srv://${username}:${password}@cluster0-ljwdh.mongodb.net/test?retryWrites=true&w=majority`;
+
+// db setup
+const mongoose = require("mongoose");
+
+mongoose.connect(dbConnection, { useNewUrlParser: true });
+
+const db = mongoose.connection;
+
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", function() {
+  console.log("Connected to the DB!");
+});
+
+const BookSchema = mongoose.model(
+  "BookSchema",
+  new mongoose.Schema({
+    _title: String,
+    _author: String,
+    _isbn: String,
+    _description: String,
+    _imageUrl: String
+  })
+);
+
+console.log(
+  new Book(
+    "Refactoring",
+    "Martin Fowler",
+    "0201485672",
+    "Description: Great, amazing book about TDD and refactoring",
+    "https://images-na.ssl-images-amazon.com/images/I/51K-M5hR8qL._SX392_BO1,204,203,200_.jpg"
+  )
+);
+
+const refactoring = new BookSchema(
+  new Book(
+    "Refactoring",
+    "Martin Fowler",
+    "0201485672",
+    "Description: Great, amazing book about TDD and refactoring",
+    "https://images-na.ssl-images-amazon.com/images/I/51K-M5hR8qL._SX392_BO1,204,203,200_.jpg"
+  )
+);
+
+refactoring.save((error, refactoring) => {
+  if (error) return console.error(error);
+  console.log(refactoring._title, refactoring._author);
+});
 
 // view engine setup
 app.set("views", path.join(__dirname, "src/server/views"));

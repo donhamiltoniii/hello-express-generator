@@ -9,4 +9,7 @@ router.get("/", BookController.renderBooks);
 /* GET book. */
 router.get("/:id", BookController.renderBook);
 
+// Add a book
+router.post("/add", BookController.addBook);
+
 module.exports = router;

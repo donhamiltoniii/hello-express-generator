@@ -1,6 +1,5 @@
 class Book {
-  constructor(id, title, author, isbn, description, imageUrl) {
-    this._id = id;
+  constructor(title, author, isbn, description, imageUrl) {
     this._title = title;
     this._author = author;
     this._isbn = isbn;
@@ -8,9 +7,9 @@ class Book {
     this._imageUrl = imageUrl;
   }
 
-  get id() {
-    return this._id;
-  }
+  // get id() {
+  //   return this._id;
+  // }
 
   get title() {
     return this._title;
