@@ -1,13 +1,13 @@
-const Author = require("../authors/author");
-const mongoose = require("mongoose");
+const authorSchema = require('../authors/author-schema')
+const mongoose = require('mongoose')
 
 module.exports = mongoose.model(
-  "Book",
+  'Book',
   new mongoose.Schema({
     title: String,
-    authors: [{ type: mongoose.Schema.Types.ObjectId, ref: "Author" }],
+    authors: [authorSchema],
     isbn: String,
     description: String,
     imageUrl: String
   })
-);
+)

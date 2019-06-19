@@ -1,7 +1,11 @@
 <main>
   <section class="book-details">
     <h1>{{book.title}}</h1>
-    <h2>{{book.author}}</h2>
+    <ul>
+      {{#each book.authors}}
+      <li>{{firstName}} {{lastName}}</li>
+      {{/each}}
+    </ul>
   </section>
   <ul>
     <li>ISBN: {{book.isbn}}</li>

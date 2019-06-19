@@ -34,6 +34,12 @@ ul {
   padding: 1rem;
 }
 
+.book-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
 .footer {
   align-items: center;
   color: orangered;
