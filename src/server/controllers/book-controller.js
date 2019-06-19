@@ -1,6 +1,5 @@
-const mongoose = require("mongoose");
-
 const Book = require("../models/books/book");
+const Author = require("../models/authors/author");
 
 class BookController {
   static renderBooks(req, res, next) {
@@ -21,11 +20,25 @@ class BookController {
   }
 
   static addBook(req, res, next) {
+    // TODO: Fix this fucking mess
     const title = req.body.title;
-    const author = req.body.author;
+    const authorFirstName = req.body.authorFirstName;
+    const authorLastName = req.body.authorLastName;
     const isbn = req.body.isbn;
     const description = req.body.description;
     const imageUrl = req.body.imageUrl;
+
+    const author = new Author({
+      firstName: authorFirstName,
+      lastName: authorLastName
+    });
+
+    let authorId;
+
+    author.save((error, author) => {
+      if (error) return console.error(error);
+      authorId = author._id;
+    });
 
     const bookToAdd = new Book({
       title,
@@ -37,7 +50,14 @@ class BookController {
 
     bookToAdd.save((error, bookToAdd) => {
       if (error) return console.error(error);
-      res.redirect("/books");
+      Author.findById(authorId, (err, author) => {
+        console.log(author);
+        bookToAdd.authors.push(author);
+        bookToAdd.save((error, bookToSave) => {
+          if (error) return console.error(error);
+          res.redirect("/books");
+        });
+      });
     });
   }
 }
