@@ -1,0 +1,16 @@
+<main>
+    <div class="container">
+        <form class="author-form" action="/authors/add" method="POST">
+            <label>First Name: <input type="text" name="firstName"></label>
+            <label>Last Name: <input type="text" name="lastName"></label>
+            <button>Submit</button>
+        </form>
+        <ul class="author-cards">
+            {{#each authors}}
+            <li class="author-card">
+                <a class="author-card__link" href="/authors/{{id}}">{{firstName}} {{lastName}}</a>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+</main>

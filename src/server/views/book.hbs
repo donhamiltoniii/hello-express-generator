@@ -3,7 +3,7 @@
     <h1>{{book.title}}</h1>
     <ul>
       {{#each book.authors}}
-      <li>{{firstName}} {{lastName}}</li>
+      <li><a href="/authors/{{id}}">{{firstName}} {{lastName}}</a></li>
       {{/each}}
     </ul>
   </section>

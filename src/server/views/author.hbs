@@ -1,0 +1,11 @@
+<main>
+    <section class="author-details">
+        <h1>{{author.firstName}} {{author.lastName}}</h1>
+        <ul>
+            {{#each author.books}}
+            <li><a href="/books/{{id}}">{{title}}</a></li>
+            {{/each}}
+        </ul>
+    </section>
+    <a href="/">Back to Home</a>
+</main>
