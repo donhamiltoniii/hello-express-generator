@@ -3,7 +3,7 @@
     <form class="book-form" action="/books/add" method="POST">
       <label>Title: <input type="text" name="title"></label>
       <label>
-        Author First Name:
+        Author:
         <select name="authorId">
           {{#each authors}}
           <option value="{{id}}">{{firstName}} {{lastName}}</option>
