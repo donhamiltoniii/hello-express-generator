@@ -16,12 +16,16 @@ class BookController {
   static renderBook(req, res, next) {
     const id = req.params.id;
     var query = Book.where({ _id: id });
-    query.findOne((err, book) => {
-      if (err) return console.error(err);
-      if (book) {
-        res.render("book", { book });
-      }
-    });
+    query
+      .findOne()
+      .populate(["authors", "tags"])
+      .exec((err, book) => {
+        if (err) return console.error(err);
+        if (book) {
+          console.log(book);
+          res.render("book", { book });
+        }
+      });
   }
 
   static addBook(req, res, next) {

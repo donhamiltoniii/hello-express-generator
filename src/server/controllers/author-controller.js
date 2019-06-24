@@ -10,12 +10,15 @@ class AuthorController {
   static renderAuthor(req, res, next) {
     const id = req.params.id;
     var query = Author.where({ _id: id });
-    query.findOne((err, author) => {
-      if (err) return console.error(err);
-      if (author) {
-        res.render("author", { author });
-      }
-    });
+    query
+      .findOne()
+      .populate(["books"])
+      .exec((err, author) => {
+        if (err) return console.error(err);
+        if (author) {
+          res.render("author", { author });
+        }
+      });
   }
 
   static addAuthor(req, res, next) {
