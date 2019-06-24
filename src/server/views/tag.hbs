@@ -1,0 +1,8 @@
+<main>
+    <h2>{{tag.name}}</h2>
+    <ul class="books">
+        {{#each tags.books}}
+        <li class="book"><a href="/books/{{id}}">{{title}}</a></li>
+        {{/each}}
+    </ul>
+</main>
