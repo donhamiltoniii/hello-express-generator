@@ -11,5 +11,10 @@
     <li>ISBN: {{book.isbn}}</li>
     <li>Description: {{book.description}}</li>
   </ul>
+  <ul>
+    {{#each book.tags}}
+    <li><a href="/tags/{{id}}">{{name}}</a></li>
+    {{/each}}
+  </ul>
   <a href="/">Back to Home</a>
 </main>
