@@ -3,29 +3,22 @@ const Author = require("../models/authors/author");
 const Tag = require("../models/tags/tag");
 
 class BookController {
-  static renderBooks(req, res, next) {
-    Book.find({}, (err, books) => {
-      Author.find({}, (err, authors) => {
-        Tag.find({}, (err, tags) => {
-          res.render("books", { authors, books, tags });
-        });
-      });
-    });
+  static async renderBooks(req, res, next) {
+    const books = await Book.find({});
+    const authors = await Author.find({});
+    const tags = await Tag.find({});
+
+    res.render("books", { authors, books, tags });
   }
 
-  static renderBook(req, res, next) {
+  static async renderBook(req, res, next) {
     const id = req.params.id;
-    var query = Book.where({ _id: id });
-    query
+    const book = await Book.where({ _id: id })
       .findOne()
       .populate(["authors", "tags"])
-      .exec((err, book) => {
-        if (err) return console.error(err);
-        if (book) {
-          console.log(book);
-          res.render("book", { book });
-        }
-      });
+      .exec();
+
+    res.render("book", { book });
   }
 
   static addBook(req, res, next) {
