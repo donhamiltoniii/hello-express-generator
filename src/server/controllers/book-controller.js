@@ -59,6 +59,30 @@ class BookController {
       });
     });
   }
+
+  static async increaseRating(req, res, next) {
+    const id = req.params.id;
+    const book = await Book.findOne({ _id: id });
+
+    book.rating++;
+
+    book.save((err, book) => {
+      if (err) console.error(err);
+      res.redirect(`/books/${id}`);
+    });
+  }
+
+  static async decreaseRating(req, res, next) {
+    const id = req.params.id;
+    const book = await Book.findOne({ _id: id });
+
+    book.rating--;
+
+    book.save((err, book) => {
+      if (err) console.error(err);
+      res.redirect(`/books/${id}`);
+    });
+  }
 }
 
 module.exports = BookController;

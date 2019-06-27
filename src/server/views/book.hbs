@@ -16,5 +16,14 @@
     <li><a href="/tags/{{id}}">{{name}}</a></li>
     {{/each}}
   </ul>
+  <section class="rating">
+    <h3 class="rating__status">Rating: {{book.rating}}</h3>
+    <form action="/books/{{book.id}}/rating/increase">
+      <button class="rating__increase">+</button>
+    </form>
+    <form action="/books/{{book.id}}/rating/decrease">
+      <button class="rating__decrease">-</button>
+    </form>
+  </section>
   <a href="/">Back to Home</a>
 </main>
